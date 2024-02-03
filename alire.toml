@@ -1,0 +1,20 @@
+name = "prunt_physical_types"
+description = "Physical types and related functions used on host side of Prunt."
+version = "0.1.0-dev"
+
+authors = ["Liam Powell"]
+maintainers = ["Liam Powell <liam@liampll.com>"]
+maintainers-logins = ["liampwll"]
+
+[build-switches]
+release.optimization = [
+  "-O3",
+  "-gnatn",
+  "-fdata-sections",
+  "-ffunction-sections",
+  "-flto=auto",
+  "-fuse-linker-plugin",
+  "-fno-pie",
+  "-fno-pic",
+  "-ffat-lto-objects"
+]
