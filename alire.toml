@@ -7,14 +7,4 @@ maintainers = ["Liam Powell <liam@liampll.com>"]
 maintainers-logins = ["liampwll"]
 
 [build-switches]
-release.optimization = [
-  "-O3",
-  "-gnatn",
-  "-fdata-sections",
-  "-ffunction-sections",
-  "-flto=auto",
-  "-fuse-linker-plugin",
-  "-fno-pie",
-  "-fno-pic",
-  "-ffat-lto-objects"
-]
+release.optimization = []
