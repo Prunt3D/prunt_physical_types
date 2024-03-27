@@ -23,11 +23,27 @@ package Physical_Types is
    subtype Dimensionless is Dimensioned_Float with
        Dimension => (Symbol => "×", others => 0);
 
+   subtype Resistance is Dimensioned_Float with
+       Dimension => (Symbol => "Ω", others => 0);
+
+   subtype Voltage is Dimensioned_Float with
+       Dimension => (Symbol => "V", others => 0);
+
+   subtype Frequency is Dimensioned_Float with
+       Dimension => (Symbol => "Hz", Second => -1, others => 0);
+
+   subtype PWM_Scale is Dimensionless range 0.0 .. 1.0;
+
+   subtype Cruise_Ratio is Dimensionless range 0.03 .. 0.97;
+
    pragma Warnings (Off, "assumed to be");
    mm      : constant Length      := 1.0;
    s       : constant Time        := 1.0;
    celcius : constant Temperature := 1.0;
    radian  : constant Angle       := 1.0;
+   ohm     : constant Resistance  := 1.0;
+   volt    : constant Voltage     := 1.0;
+   hertz   : constant Frequency   := 1.0;
    pragma Warnings (On, "assumed to be");
 
    ms  : constant Time  := s / 1_000.0;
