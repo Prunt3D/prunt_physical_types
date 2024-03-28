@@ -6,7 +6,10 @@ package Physical_Types is
      Dimension_System =>
       ((Unit_Name => Millimeter, Unit_Symbol => "mm", Dim_Symbol => "Length"),
        (Unit_Name => Second, Unit_Symbol => "s", Dim_Symbol => "Time"),
-       (Unit_Name => Celcius, Unit_Symbol => "°C", Dim_Symbol => "Temperature"));
+       (Unit_Name => Celcius, Unit_Symbol => "°C", Dim_Symbol => "Temperature"),
+       (Unit_Name => Volt, Unit_Symbol => "V", Dim_Symbol => "Voltage"),
+       (Unit_Name => Amp, Unit_Symbol => "A", Dim_Symbol => "Current"),
+       (Unit_Name => Gram, Unit_Symbol => "g", Dim_Symbol => "Mass"));
 
    subtype Length is Dimensioned_Float with
        Dimension => (Symbol => "mm", Millimeter => 1, others => 0);
@@ -23,14 +26,26 @@ package Physical_Types is
    subtype Dimensionless is Dimensioned_Float with
        Dimension => (Symbol => "×", others => 0);
 
-   subtype Resistance is Dimensioned_Float with
-       Dimension => (Symbol => "Ω", others => 0);
-
    subtype Voltage is Dimensioned_Float with
-       Dimension => (Symbol => "V", others => 0);
+       Dimension => (Symbol => "V", Volt => 1, others => 0);
+
+   subtype Current is Dimensioned_Float with
+       Dimension => (Symbol => "A", Amp => 1, others => 0);
+
+   subtype Mass is Dimensioned_Float with
+       Dimension => (Symbol => "g", Gram => 1, others => 0);
+
+   subtype Resistance is Dimensioned_Float with
+       Dimension => (Symbol => "Ω", Volt => 1, Amp => -1, others => 0);
+
+   subtype Power is Dimensioned_Float with
+       Dimension => (Symbol => "W", Volt => 1, Amp => 1, others => 0);
 
    subtype Frequency is Dimensioned_Float with
        Dimension => (Symbol => "Hz", Second => -1, others => 0);
+
+   subtype Energy is Dimensioned_Float with
+       Dimension => (Symbol => "J", Volt => 1, Amp => 1, Second => 1, others => 0);
 
    subtype PWM_Scale is Dimensionless range 0.0 .. 1.0;
 
@@ -41,9 +56,13 @@ package Physical_Types is
    s       : constant Time        := 1.0;
    celcius : constant Temperature := 1.0;
    radian  : constant Angle       := 1.0;
-   ohm     : constant Resistance  := 1.0;
    volt    : constant Voltage     := 1.0;
+   amp     : constant Current     := 1.0;
+   ohm     : constant Resistance  := 1.0;
    hertz   : constant Frequency   := 1.0;
+   watt    : constant Power       := 1.0;
+   joule   : constant Energy      := 1.0;
+   gram    : constant Mass        := 1.0;
    pragma Warnings (On, "assumed to be");
 
    ms  : constant Time  := s / 1_000.0;
@@ -76,6 +95,21 @@ package Physical_Types is
        Dimension => (Symbol => "mm⁻³", Millimeter => -3, others => 0);
    subtype Curvature_To_4 is Dimensioned_Float with
        Dimension => (Symbol => "mm⁻⁴", Millimeter => -4, others => 0);
+
+   subtype Heat_Flux is Dimensioned_Float with
+       Dimension => (Symbol => "W/mm²", Volt => 1, Amp => 1, Millimeter => -2, others => 0);
+
+   subtype Heat_Transfer_Coefficient is Dimensioned_Float with
+       Dimension => (Symbol => "W/(mm²°C)", Volt => 1, Amp => 1, Millimeter => -2, Celcius => -1, others => 0);
+
+   subtype Specific_Heat_Transfer_Coefficient is Dimensioned_Float with
+       Dimension => (Symbol => "W/°C", Volt => 1, Amp => 1, Celcius => -1, others => 0);
+
+   subtype Heat_Capacity is Dimensioned_Float with
+       Dimension => (Symbol => "J/°C", Volt => 1, Amp => 1, Second => 1, Celcius => -1, others => 0);
+
+   subtype Specific_Heat_Capacity is Dimensioned_Float with
+       Dimension => (Symbol => "J/(g°C)", Volt => 1, Amp => 1, Second => 1, Gram => -1, Celcius => -1, others => 0);
 
    type Axis_Name is (X_Axis, Y_Axis, Z_Axis, E_Axis);
 
