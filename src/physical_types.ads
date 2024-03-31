@@ -119,6 +119,7 @@ package Physical_Types is
    type Position_Offset is array (Axis_Name) of Length;
    type Scaled_Position_Offset is array (Axis_Name) of Length;
    type Position_Scale is array (Axis_Name) of Dimensionless;
+   type Axial_Velocities is array (Axis_Name) of Velocity;
 
    function "*" (Left : Position; Right : Position_Scale) return Scaled_Position;
    function "*" (Left : Position_Offset; Right : Position_Scale) return Position_Offset;
