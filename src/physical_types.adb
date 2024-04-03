@@ -87,7 +87,7 @@ package body Physical_Types is
 
    function "-" (Left : Position; Right : Position_Offset) return Position is
    begin
-      return [for I in Axis_Name => Left (I) + Right (I)];
+      return [for I in Axis_Name => Left (I) - Right (I)];
    end "-";
 
    function "/" (Left : Position_Offset; Right : Length) return Position_Scale is
