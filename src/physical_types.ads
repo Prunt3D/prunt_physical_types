@@ -111,6 +111,13 @@ package Physical_Types is
    subtype Specific_Heat_Capacity is Dimensioned_Float with
        Dimension => (Symbol => "J/(g°C)", Volt => 1, Amp => 1, Second => 1, Gram => -1, Celcius => -1, others => 0);
 
+   subtype Inverse_Temperature is Dimensioned_Float with
+       Dimension => (Symbol => "°C⁻¹", Celcius => -1, others => 0);
+   subtype Time_Over_Temperature is Dimensioned_Float with
+       Dimension => (Symbol => "s/°C", Second => 1, Celcius => -1, others => 0);
+   subtype Frequency_Over_Temperature is Dimensioned_Float with
+       Dimension => (Symbol => "Hz/°C", Second => -1, Celcius => -1, others => 0);
+
    type Axis_Name is (X_Axis, Y_Axis, Z_Axis, E_Axis);
 
    type Position is array (Axis_Name) of Length;
