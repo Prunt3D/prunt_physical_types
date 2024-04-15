@@ -153,6 +153,7 @@ package Physical_Types is
    function "*" (Left : Position_Offset; Right : Position_Scale) return Position_Offset;
    function "*" (Left : Position_Scale; Right : Dimensionless) return Position_Scale;
    function "*" (Left : Position_Scale; Right : Length) return Scaled_Position_Offset;
+   function "*" (Left : Position_Scale; Right : Velocity) return Axial_Velocities;
    function "*" (Left : Scaled_Position; Right : Position_Scale) return Scaled_Position;
    function "*" (Left : Scaled_Position; Right : Dimensionless) return Scaled_Position;
    function "*" (Left : Scaled_Position_Offset; Right : Position_Scale) return Scaled_Position_Offset;
@@ -166,6 +167,7 @@ package Physical_Types is
    function "-" (Left, Right : Scaled_Position_Offset) return Scaled_Position_Offset;
    function "-" (Left : Scaled_Position; Right : Scaled_Position_Offset) return Scaled_Position;
    function "-" (Left : Position; Right : Position_Offset) return Position;
+   function "/" (Left : Axial_Velocities; Right : Position_Scale) return Axial_Velocities;
    function "/" (Left : Position_Offset; Right : Length) return Position_Scale;
    function "/" (Left : Position_Scale; Right : Dimensionless) return Position_Scale;
    function "/" (Left : Scaled_Position_Offset; Right : Length) return Position_Scale;

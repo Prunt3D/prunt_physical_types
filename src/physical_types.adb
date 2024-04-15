@@ -46,6 +46,11 @@ package body Physical_Types is
       return [for I in Axis_Name => Left (I) * Right];
    end "*";
 
+   function "*" (Left : Position_Scale; Right : Velocity) return Axial_Velocities is
+   begin
+      return [for I in Axis_Name => Left (I) * Right];
+   end "*";
+
    function "*" (Left : Scaled_Position; Right : Position_Scale) return Scaled_Position is
    begin
       return [for I in Axis_Name => Left (I) * Right (I)];
@@ -110,6 +115,11 @@ package body Physical_Types is
    begin
       return [for I in Axis_Name => Left (I) - Right (I)];
    end "-";
+
+   function "/" (Left : Axial_Velocities; Right : Position_Scale) return Axial_Velocities is
+   begin
+      return [for I in Axis_Name => Left (I) / Right (I)];
+   end "/";
 
    function "/" (Left : Position_Offset; Right : Length) return Position_Scale is
    begin
